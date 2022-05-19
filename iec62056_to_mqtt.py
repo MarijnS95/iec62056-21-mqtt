@@ -15,6 +15,7 @@ parser = argparse.ArgumentParser(
     description="Publish DSMR P1 telegrams acquired over IEC62056-21 to MQTT"
 )
 parser.add_argument("device_name", help="MQTT topic prefix")
+parser.add_argument("serial", help="Serial device file")
 parser.add_argument("mqtt_host", help="MQTT broker address")
 args = parser.parse_args()
 
@@ -28,7 +29,7 @@ client.on_connect = on_connect
 client.connect(args.mqtt_host)
 client.loop_start()
 
-serial = Iec6205621Client.with_serial_transport(port="/dev/ttyUSB0")
+serial = Iec6205621Client.with_serial_transport(port=args.serial)
 serial.connect()
 logger.info("Connected to iec62056 serial")
 
