@@ -47,8 +47,8 @@ while True:
     try:
         r = serial.standard_readout()
     except Exception as e:
-        logger.exception("Reading failed, waiting 30s")
-        time.sleep(30)
+        logger.exception("Reading failed, waiting 60s")
+        time.sleep(60)
         continue
 
     for l in r.data:
