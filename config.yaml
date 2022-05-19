@@ -1,0 +1,23 @@
+name: "IEC62056-21 to MQTT"
+description: "Publish DSMR P1 telegrams acquired over IEC62056-21 to MQTT"
+url: https://github.com/MarijnS95/iec62056-21-mqtt
+version: "1.0.0"
+slug: "iec62056-21-mqtt"
+init: false
+uart: true
+services:
+  - mqtt:need
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+panel_icon: mdi:meter-electric
+
+schema:
+  device_name: str
+  serial: str
+options:
+  device_name: null
+  serial: /dev/ttyUSB0

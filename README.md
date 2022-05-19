@@ -4,7 +4,17 @@ Publish DSMR P1 telegrams acquired over IEC62056-21 to MQTT.
 
 `-21` is the "Direct local data exchange" standard, defining how to communicate with meters directly. This is required for "smart" meters that do not feature a physical `RJ12` P1 port but an optocoupler directly on the outside. By default these meters blink 1000 times per kWh, and need to be sent special command sequences from the IEC62056-21 standard to reply with a P1 telegram once (instead of continuously as is common across physical P1 ports).
 
-### Usage
+## Usage
+
+### Directly on HASS
+
+(This is temporary, until the script is converted to a proper integration to supersede manual MQTT switch configuration below).
+
+Clone this repository inside your `/addons` folder, and [install the _local_ addon from the HassIO store](https://my.home-assistant.io/redirect/supervisor_addon/?addon=local_iec62056-21-mqtt).
+
+Set a device name in the configuration tab (used in published data lines as [explained below](###Output)) before starting the addon.
+
+### On an external machine (with access to MQTT)
 
 Install the required dependencies through `pip install -r requirements.txt`, then start the script using:
 
