@@ -17,6 +17,8 @@ parser = argparse.ArgumentParser(
 parser.add_argument("device_name", help="MQTT topic prefix")
 parser.add_argument("serial", help="Serial device file")
 parser.add_argument("mqtt_host", help="MQTT broker address")
+parser.add_argument("mqtt_username", help="MQTT username")
+parser.add_argument("mqtt_password", help="MQTT password")
 args = parser.parse_args()
 
 
@@ -26,6 +28,7 @@ def on_connect(client, userdata, flags, rc):
 
 client = mqtt.Client()
 client.on_connect = on_connect
+client.username_pw_set(args.mqtt_username, args.mqtt_password)
 client.connect(args.mqtt_host)
 client.loop_start()
 
